@@ -7,6 +7,13 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true,
       },
+      user_id: {
+        type: Sequelize.INTEGER,
+        references: { model: 'users', key: 'id' },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
+        allowNull: false,
+      },
       title: {
         type: Sequelize.STRING,
         allowNull: false,
@@ -22,13 +29,6 @@ module.exports = {
       date: {
         allowNull: false,
         type: Sequelize.DATE,
-      },
-      organizer_id: {
-        type: Sequelize.INTEGER,
-        references: { model: 'users', key: 'id' },
-        onUpdate: 'CASCADE',
-        onDelete: 'SET NULL',
-        allowNull: false,
       },
       created_at: {
         type: Sequelize.DATE,
